@@ -43,27 +43,27 @@ function daBears() {
 // Which function(s) access the "chair" variable and get "Too Big!"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale1 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale1 = ["daBears", "papaBear"];
 
 // Which function(s) access the "feeling" variable and get "Hungry"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale2 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale2 = ["daBears","goldilocks"];
 
 // Which function(s) access the "porridge" variable and get "Too Cold!"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale3 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale3 = ["daBears", "papaBear", "mamaBear"];
 
 // Which function(s) access the "sleepy" variable and get undefined
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale4 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale4 = ["daBears", "papaBear", "mamaBear", "goldilocks"];
 
 // Which function(s) access the isFurry variable and get true
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale5 = ["daBears"];
 
 
 // *************
@@ -82,9 +82,25 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 // "charger" once, and invoke it twice on "mustang".
 
 // CODE HERE...
+function Vehicle() {
+    this.gasRemaining = 100;
+}
+Vehicle.prototype.drive = function () {
+    gasRemaining -= 25;
+}
+
+function charger() {
+    Vehicle.call(this)
+}
+charger.prototype = Object.create(Vehicle.prototype)
+charger.prototype.constructor = charger
 
 
-
+function mustang() {
+    Vehicle.call(this)
+}
+mustang.prototype = Object.create(Vehicle.prototype)
+mustang.prototype.constructor = mustang
 
 
 // -----------------------------------------------------------------------------
@@ -105,7 +121,21 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 // and should neither modify them nor break when encountering them.
 
 
+function String(argument) {
+    // body...
+}
 
+String.prototype.grammarPolice = function (argument) {
+    arrayStr = argument.split(' ');
+    for (var i = 0; i < arrayStr.length; i++) {
+        for (var j = 1; j < arrayStr[j].length; j++) {
+           arrayStr[i][0].toUpperCase()
+           arrayStr[i][j].toLowerCase()
+        }
+        
+    }
+    return arrayStr.join('')
+}
 
 // CODE HERE...
 
@@ -124,6 +154,17 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 // If the arguments have the same value but are of different types, return "Same value, different types"
 
 // In all other cases, return "Different values"
+function valueType(argument1, argument2) {
+    // body...
+    if (argument1 === argument2) {
+        return "Exactly the same"
+    }
+    if (argument1 == argument2) {
+        return "Same value, different types"
+    }
+
+    return "Different values"
+}
 
 // CODE HERE...
 
@@ -152,6 +193,10 @@ function large() {
     return 'My name is ' + this.name + ' and I am very heavy!'
 }
   // CODE HERE...
+  function boundToElephant() {
+     large.bind(elephant)
+  }
+  // i dont get the quation
 
 // *************
 // * PROBLEM 6 *
@@ -178,3 +223,15 @@ function large() {
 // The closure function will return the combined value of assets and liabilities.
 
 // CODE HERE...
+
+function accountingOffice(argument) {
+    // body...
+    var assets = argument;
+
+    var info = function (argument) {
+        // body...
+        var liabilities = argument
+
+        return `assets is ${assets} and liabilities is ${liabilities}`
+    }
+}
